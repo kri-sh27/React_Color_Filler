@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.color-picker {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.color.selected {
+  border-color: black;
+}
+
+.circle-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  border-radius: 50%;
+  cursor: pointer;
+}
