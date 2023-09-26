@@ -67,7 +67,7 @@ pipeline {
         stage('Install Dependencies') {
     steps {
         script {
-            def npmPath = tool name: 'NodeJS', type: 'Tool Installation'
+            def npmPath = tool name: 'NodeJs', type: 'Tool Installation'
             echo "Using npm at: ${npmPath}"
             sh "${npmPath}/bin/npm install"
         }
