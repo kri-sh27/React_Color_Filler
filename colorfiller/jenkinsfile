@@ -1,91 +1,135 @@
-// pipeline {
-//     agent any
-//     tools {nodejs "NodeJs"}  //name should be similar to name used for installer in the global tool configuration.
+// // pipeline {
+// //     agent any
+// //     tools {nodejs "NodeJs"}  //name should be similar to name used for installer in the global tool configuration.
 
     
-//     stages {
-//         stage('Checkout') {
+// //     stages {
+// //         stage('Checkout') {
+// //             steps {
+// //                 // Check out the code from the repository
+// //                 checkout scm
+// //             }
+// //         }
+        
+// //         stage('Install Dependencies') {
+// //             steps {
+// //                 // Install Node.js and npm (if not already installed)
+// //                 sh 'npm install'
+// //             }
+// //         }
+        
+// //         stage('Build') {
+// //             steps {
+// //                 // Build the React app
+// //                 sh 'npm run build'
+// //             }
+// //         }
+        
+// //         // You can add more stages for deployment, testing, etc.
+// //     }
+// // }
+// pipeline {
+//   agent any
+//   stages {
+//     // stage('Back-end') {
+//     //   agent {
+//     //     docker { image 'maven:3.8.1-adoptopenjdk-11' }
+//     //   }
+//     //   steps {
+//     //     sh 'mvn --version'
+//     //   }
+//     // }
+//     stage('Front-end') {
+//       agent {
+//         docker { image 'node:16-alpine' }
+//       }
+
+//          steps {
+//         sh 'node --version'
+//         sh 'npm --version'
+//       }
+//     }
+
+//        stage('Checkout') {
 //             steps {
 //                 // Check out the code from the repository
 //                 checkout scm
 //             }
 //         }
-        
+
 //         stage('Install Dependencies') {
 //             steps {
 //                 // Install Node.js and npm (if not already installed)
-//                 sh 'npm install'
-//             }
-//         }
-        
-//         stage('Build') {
-//             steps {
-//                 // Build the React app
-//                 sh 'npm run build'
-//             }
-//         }
-        
-//         // You can add more stages for deployment, testing, etc.
-//     }
-// }
-pipeline {
-  agent any
-  stages {
-    // stage('Back-end') {
-    //   agent {
-    //     docker { image 'maven:3.8.1-adoptopenjdk-11' }
-    //   }
-    //   steps {
-    //     sh 'mvn --version'
-    //   }
-    // }
-    stage('Front-end') {
-      agent {
-        docker { image 'node:16-alpine' }
-      }
+//         //         echo "Current directory: ${pwd()}"
+//         //          sh 'npm config list'
+//         // sh 'npm install'
+//                 // sh 'npm install'
 
-         steps {
-        sh 'node --version'
-        sh 'npm --version'
-      }
-    }
-
-       stage('Checkout') {
-            steps {
-                // Check out the code from the repository
-                checkout scm
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                // Install Node.js and npm (if not already installed)
-        //         echo "Current directory: ${pwd()}"
-        //          sh 'npm config list'
-        // sh 'npm install'
-                // sh 'npm install'
-
-                script {
-            def npmPath = tool name: 'NodeJs'
-            echo "Using npm at: ${npmPath}"
-            sh "${npmPath}/bin/npm install"
-        }
-                
-            }
-        }
-//         stage('Install Dependencies') {
-//     steps {
-//         script {
-//             def npmPath = tool name: 'NodeJs', type: 'Tool Installation'
+//                 script {
+//             def npmPath = tool name: 'NodeJs'
 //             echo "Using npm at: ${npmPath}"
 //             sh "${npmPath}/bin/npm install"
 //         }
-//     }
+                
+//             }
+//         }
+// //         stage('Install Dependencies') {
+// //     steps {
+// //         script {
+// //             def npmPath = tool name: 'NodeJs', type: 'Tool Installation'
+// //             echo "Using npm at: ${npmPath}"
+// //             sh "${npmPath}/bin/npm install"
+// //         }
+// //     }
+// // }
+
+
+
+//     //
+    
+//   }
 // }
 
-
-
-    //
-    
-  }
+pipeline {
+     /*
+     agent {  
+        docker {
+            image 'node' 
+            args '-p 3000:3000' 
+        }  
+    }
+    */
+    agent any
+    stages {
+        stage('Build') { 
+            steps {
+                echo "building states"
+                sh 'node -v' 
+                sh 'npm install' 
+                
+            }
+        }
+         stage('Test') { 
+            steps {
+                echo "testing stage"
+                sh "npm test"
+            }
+        }
+         
+         stage('Deploy') { 
+            steps {
+                echo "Deploying..."
+               
+            }
+        }
+    }
+     post{
+          always{
+               echo "pipeline concluded."
+          }
+          success{
+               echo "all stages executed with success."
+               sh 'npm start'
+          }
+     }
 }
