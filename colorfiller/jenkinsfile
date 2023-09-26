@@ -21,6 +21,16 @@ pipeline {
             }
         }
 
+                stage('Pull Docker Image') {
+            steps {
+                script {
+                    // Pull the Node.js Alpine image
+                    docker.image('node:16-alpine').pull()
+                }
+            }
+        }
+
+
         stage('Install Dependencies') {
             steps {
                 // sh 'sudo apt install nodejs'
