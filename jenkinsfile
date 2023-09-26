@@ -23,7 +23,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // sh 'sudo apt install nodejs'
+                 dir('colorfiller/') {
                 sh 'npm install'
+            }
             }
         }
 
