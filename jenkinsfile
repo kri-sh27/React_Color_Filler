@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    //  environment {
-    //     NODEJS_HOME = tool(name: 'NodeJS', type: 'Tool')
-    //     PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-    // }
+     environment {
+        NODEJS_HOME = tool(name: 'CustomNodeJS', type: 'Tool')
+        PATH = "${env.CUSTOM_NODEJS_HOME}/bin:${env.PATH}"
+    }
 
     stages {
 
@@ -18,9 +18,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
-                    sh 'npm config ls'
-                }
+                
                 checkout scm
             }
         }
