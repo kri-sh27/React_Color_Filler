@@ -61,7 +61,10 @@ pipeline {
             steps {
                 // Install Node.js and npm (if not already installed)
                 echo "Current directory: ${pwd()}"
+                 sh 'npm config list'
+        sh 'npm install'
                 // sh 'npm install'
+                
             }
         }
 //         stage('Install Dependencies') {
