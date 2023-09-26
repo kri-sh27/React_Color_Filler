@@ -1,12 +1,21 @@
 pipeline {
     agent any
-     environment {
-        // NODEJS_HOME = tool(name: 'NodeJS', type: 'Tool')
-        // PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-        sh 'sudo apt install nodejs'
-    }
+    //  environment {
+    //     NODEJS_HOME = tool(name: 'NodeJS', type: 'Tool')
+    //     PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+    // }
 
     stages {
+
+
+        stage('Build') {
+            steps {
+                nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+                    sh 'npm config ls'
+                }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
