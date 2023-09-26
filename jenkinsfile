@@ -1,9 +1,6 @@
 pipeline {
     agent any
-     environment {
-        NODEJS_HOME = tool(name: 'CustomNodeJS', type: 'Tool')
-        PATH = "${env.CUSTOM_NODEJS_HOME}/bin:${env.PATH}"
-    }
+    tools {nodejs "node"}
 
     stages {
 
