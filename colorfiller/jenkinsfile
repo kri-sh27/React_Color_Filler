@@ -57,13 +57,22 @@ pipeline {
             }
         }
 
+        // stage('Install Dependencies') {
+        //     steps {
+        //         // Install Node.js and npm (if not already installed)
+        //         echo "Current directory: ${pwd()}"
+        //         sh 'npm install'
+        //     }
+        // }
         stage('Install Dependencies') {
-            steps {
-                // Install Node.js and npm (if not already installed)
-                echo "Current directory: ${pwd()}"
-                sh 'npm install'
-            }
+    steps {
+        script {
+            def npmPath = tool name: 'NodeJS', type: 'Tool Installation'
+            echo "Using npm at: ${npmPath}"
+            sh "${npmPath}/bin/npm install"
         }
+    }
+}
 
 
 
