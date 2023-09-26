@@ -43,9 +43,19 @@ pipeline {
       agent {
         docker { image 'node:16-alpine' }
       }
-      steps {
-        sh 'node --version'
-      }
+
+       stage('Checkout') {
+            steps {
+                // Check out the code from the repository
+                checkout scm
+            }
+        }
+
+
+
+    //   steps {
+    //     sh 'node --version'
+    //   }
     }
   }
 }
