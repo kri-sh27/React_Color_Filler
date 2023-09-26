@@ -1,8 +1,9 @@
 pipeline {
     agent any
      environment {
-        NODEJS_HOME = tool(name: 'NodeJS', type: 'Tool')
-        PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+        // NODEJS_HOME = tool(name: 'NodeJS', type: 'Tool')
+        // PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+        sh 'sudo apt install nodejs'
     }
 
     stages {
@@ -14,7 +15,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-
+                // sh 'sudo apt install nodejs'
                 sh 'npm install'
             }
         }
