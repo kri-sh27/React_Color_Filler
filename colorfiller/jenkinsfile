@@ -27,8 +27,8 @@ pipeline {
              stage('Pull Docker Image') {
             steps {
                 script {
-                    def dockerVersion = '24.0.6'
-                    sh "/usr/bin/docker${dockerVersion} pull node:16-alpine"
+                    // def dockerVersion = '24.0.6'
+                    sh "/usr/bin/docker pull node:16-alpine"
                 }
             }
         }
