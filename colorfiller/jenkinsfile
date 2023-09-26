@@ -25,13 +25,13 @@ pipeline {
         
 
              stage('Pull Docker Image') {
-    steps {
-        script {
-            // Specify the full path to the Docker executable
-            sh '/usr/bin/docker pull node:16-alpine'
+            steps {
+                script {
+                    def dockerVersion = '24.0.6'
+                    sh "/usr/bin/docker${dockerVersion} pull node:16-alpine"
+                }
+            }
         }
-    }
-}
 stage('Check Environment') {
     steps {
         script {
