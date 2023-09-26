@@ -22,15 +22,25 @@ pipeline {
                 checkout scm
             }
         }
+        
 
              stage('Pull Docker Image') {
     steps {
         script {
-            // Pull the Node.js Alpine image using the Docker command
-            sh 'docker pull node:16-alpine'
+            // Specify the full path to the Docker executable
+            sh '/usr/bin/docker pull node:16-alpine'
         }
     }
-}  
+}
+stage('Check Environment') {
+    steps {
+        script {
+            // Print the environment variables to the console
+            sh 'env'
+        }
+    }
+}
+
 
 
         stage('Install Dependencies') {
