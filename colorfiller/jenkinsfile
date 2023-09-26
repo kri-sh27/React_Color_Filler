@@ -43,6 +43,10 @@ pipeline {
       agent {
         docker { image 'node:16-alpine' }
       }
+
+         steps {
+        sh 'node --version'
+      }
     }
 
        stage('Checkout') {
@@ -54,9 +58,7 @@ pipeline {
 
 
 
-    //   steps {
-    //     sh 'node --version'
-    //   }
+    //
     
   }
 }
