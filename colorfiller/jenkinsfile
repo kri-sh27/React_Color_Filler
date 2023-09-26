@@ -46,6 +46,7 @@ pipeline {
 
          steps {
         sh 'node --version'
+        sh 'npm --version'
       }
     }
 
@@ -56,12 +57,12 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                // Install Node.js and npm (if not already installed)
-                sh 'npm install'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         // Install Node.js and npm (if not already installed)
+        //         sh 'npm install'
+        //     }
+        // }
 
 
 
