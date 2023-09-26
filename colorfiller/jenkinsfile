@@ -105,6 +105,7 @@ pipeline {
             steps {
                 echo "building states"
                 sh 'node -v' 
+                sh 'npm --version'
                 sh 'npm install' 
                 
             }
