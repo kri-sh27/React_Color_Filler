@@ -60,8 +60,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Node.js and npm (if not already installed)
-                 def currentDir = pwd()
-            echo "Current directory: ${currentDir}"
+                echo "Current directory: ${pwd()}"
                 sh 'npm install'
             }
         }
