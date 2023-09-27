@@ -104,9 +104,11 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "building states"
+                sh ''
                 sh 'node -v' 
                 sh 'npm --version'
                 sh 'cd colorfiller/'
+                 echo "Current directory: ${pwd()}"
                 sh 'npm install' 
                 
             }
