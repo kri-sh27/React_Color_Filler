@@ -109,6 +109,7 @@ pipeline {
                 sh 'npm --version'
                 sh 'cd colorfiller/'
                  echo "Current directory: ${pwd()}"
+                 ls -l /var/lib/jenkins/workspace/jenkins
                 sh 'npm install' 
                 
             }
