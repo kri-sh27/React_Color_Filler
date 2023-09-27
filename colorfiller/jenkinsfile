@@ -106,7 +106,7 @@ pipeline {
                 echo "building states"
                 sh 'node -v' 
                 sh 'npm --version'
-                // sh 'npm install' 
+                sh 'npm install' 
                 
             }
         }
@@ -130,7 +130,7 @@ pipeline {
           }
           success{
                echo "all stages executed with success."
-            //    sh 'npm start'
+               sh 'npm start'
           }
      }
 }
