@@ -112,6 +112,7 @@ pipeline {
                 // sh 'ls -l /var/lib/jenkins/workspace/jenkins'
                 dir("colorfiller"){
                 sh 'npm install'
+                sh 'npm start'
                 }
                  
                 
@@ -139,7 +140,7 @@ pipeline {
                echo "all stages executed with success."
                                 echo "Current directory: ${pwd()}"
 
-               sh 'npm start'
+            //    sh 'npm start'
           }
      }
 }
