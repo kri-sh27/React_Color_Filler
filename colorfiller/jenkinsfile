@@ -106,7 +106,7 @@ pipeline {
                 echo "building states"
                 sh 'node -v' 
                 sh 'npm --version'
-                sh 'cd colorfiller'
+                sh 'cd colorfiller/'
                 sh 'npm install' 
                 
             }
