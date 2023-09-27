@@ -130,7 +130,7 @@ pipeline {
           }
           success{
                echo "all stages executed with success."
-               sh 'npm start'
+            //    sh 'npm start'
           }
      }
 }
