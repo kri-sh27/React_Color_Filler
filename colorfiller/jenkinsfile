@@ -113,7 +113,9 @@ pipeline {
                 dir("colorfiller"){
                     sh 'npm --version'
                 sh 'npm install'
-                sh 'npm start'
+                 timeout(time: 240, unit: 'SECONDS') {
+                        sh 'npm start'
+                    }
                 }
                  
                 
