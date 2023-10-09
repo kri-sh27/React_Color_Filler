@@ -17,7 +17,7 @@ COPY . .
 # RUN npm run build
 
 # Expose a port (usually 80 for HTTP)
-# EXPOSE 80
+EXPOSE 80
 
 # Start the React app when the container runs
 CMD ["npm", "start"]
