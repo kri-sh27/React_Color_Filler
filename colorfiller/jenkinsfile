@@ -104,13 +104,14 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "building states"
-                sh ''
+                // sh ''
                 sh 'node -v' 
-                sh 'npm --version'
+                
                 // sh 'cd colorfiller/'
                 //  echo "Current directory: ${pwd()}"
                 // sh 'ls -l /var/lib/jenkins/workspace/jenkins'
                 dir("colorfiller"){
+                    sh 'npm --version'
                 sh 'npm install'
                 sh 'npm start'
                 }
